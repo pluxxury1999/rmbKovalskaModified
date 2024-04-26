@@ -4,15 +4,11 @@ import "./documents.css";
 
 const Documents = ({ content }) => {
 
-    const documents = content.documents.map((document, index) => {
-        return <DocumentListItem key={'document' + index} id={document.id} document={document} />;
-    });
-
     return (
         <section id={content.identificator}>
-            <div className="documents__title">{content.title}</div>
-            <div className="documentsList__wrapper">
-                {documents.reverse()}
+            <div className="title__block">{content.title}</div>
+            <div className="documents__wrapper">
+                <p>some content</p>
             </div>
         </section>
     );

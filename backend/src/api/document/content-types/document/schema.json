@@ -21,10 +21,10 @@
       "type": "media",
       "multiple": false
     },
-    "document_category": {
+    "category": {
       "type": "relation",
       "relation": "manyToOne",
-      "target": "api::document-category.document-category",
+      "target": "api::category.category",
       "inversedBy": "documents"
     }
   }

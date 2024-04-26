@@ -1,29 +1,5 @@
 import type { Schema, Attribute } from '@strapi/strapi';
 
-export interface ComponentElementsDocCategory extends Schema.Component {
-  collectionName: 'components_component_elements_doc_categories';
-  info: {
-    displayName: 'docCategory';
-    description: '';
-  };
-  attributes: {
-    categoryName: Attribute.String;
-    categoryContent: Attribute.Component<'component-elements.doc-item', true>;
-  };
-}
-
-export interface ComponentElementsDocItem extends Schema.Component {
-  collectionName: 'components_component_elements_doc_items';
-  info: {
-    displayName: 'docItem';
-    description: '';
-  };
-  attributes: {
-    docTitle: Attribute.String;
-    document: Attribute.Media;
-  };
-}
-
 export interface ComponentElementsLinks extends Schema.Component {
   collectionName: 'components_component_elements_links';
   info: {
@@ -88,11 +64,11 @@ export interface ComponentsDocuments extends Schema.Component {
   collectionName: 'components_components_documents';
   info: {
     displayName: 'documents';
+    description: '';
   };
   attributes: {
     title: Attribute.String;
     identificator: Attribute.String;
-    documents: Attribute.Component<'component-elements.doc-category', true>;
   };
 }
 
@@ -125,8 +101,6 @@ export interface ComponentsHeader extends Schema.Component {
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
-      'component-elements.doc-category': ComponentElementsDocCategory;
-      'component-elements.doc-item': ComponentElementsDocItem;
       'component-elements.links': ComponentElementsLinks;
       'component-elements.list-element': ComponentElementsListElement;
       'component-elements.list': ComponentElementsList;

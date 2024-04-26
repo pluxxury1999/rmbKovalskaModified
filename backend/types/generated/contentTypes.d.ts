@@ -788,6 +788,52 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
+export interface ApiCategoryCategory extends Schema.CollectionType {
+  collectionName: 'categories';
+  info: {
+    singularName: 'category';
+    pluralName: 'categories';
+    displayName: 'Category';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String;
+    documents: Attribute.Relation<
+      'api::category.category',
+      'oneToMany',
+      'api::document.document'
+    >;
+    parentCategory: Attribute.Relation<
+      'api::category.category',
+      'oneToMany',
+      'api::category.category'
+    >;
+    subCategories: Attribute.Relation<
+      'api::category.category',
+      'manyToOne',
+      'api::category.category'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::category.category',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::category.category',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiDocumentDocument extends Schema.CollectionType {
   collectionName: 'documents';
   info: {
@@ -801,10 +847,10 @@ export interface ApiDocumentDocument extends Schema.CollectionType {
   attributes: {
     name: Attribute.String;
     document: Attribute.Media;
-    document_category: Attribute.Relation<
+    category: Attribute.Relation<
       'api::document.document',
       'manyToOne',
-      'api::document-category.document-category'
+      'api::category.category'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -817,42 +863,6 @@ export interface ApiDocumentDocument extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::document.document',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiDocumentCategoryDocumentCategory
-  extends Schema.CollectionType {
-  collectionName: 'document_categories';
-  info: {
-    singularName: 'document-category';
-    pluralName: 'document-categories';
-    displayName: 'documentCategory';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    category: Attribute.String;
-    documents: Attribute.Relation<
-      'api::document-category.document-category',
-      'oneToMany',
-      'api::document.document'
-    >;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::document-category.document-category',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::document-category.document-category',
       'oneToOne',
       'admin::user'
     > &
@@ -934,8 +944,8 @@ declare module '@strapi/types' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
+      'api::category.category': ApiCategoryCategory;
       'api::document.document': ApiDocumentDocument;
-      'api::document-category.document-category': ApiDocumentCategoryDocumentCategory;
       'api::main-page.main-page': ApiMainPageMainPage;
       'api::test.test': ApiTestTest;
     }
