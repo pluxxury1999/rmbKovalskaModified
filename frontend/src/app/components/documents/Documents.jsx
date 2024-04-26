@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 
 import { getAllCategories } from "../../api/getContent";
 
-// import "./documents.css";
+import "./documents.css";
 
 const Documents = ({ content }) => {
     const [categories, setCategories] = useState([]);
@@ -25,8 +25,8 @@ const Documents = ({ content }) => {
 
     return (
         <section id={content.identificator}>
-            <div className="title__block">{content.title}</div>
-            <div >{!loading ? mainCategories.reverse() : "lost connection"}</div>
+            <div className="documents__title">{content.title}</div>
+            <div className="documentsList__wrapper">{!loading ? mainCategories.reverse() : "lost connection"}</div>
         </section>
     );
 };

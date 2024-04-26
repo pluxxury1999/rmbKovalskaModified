@@ -1,13 +1,16 @@
 @import url("../../variebles.css");
 
 .documentItem__wrapper {
-    margin-left: 113px;
     transition: 0.4s ease;
+    width: 1119px;
+    margin-left: 113px;
 }
 
 .documentItem__wrapper.active {
-    margin-left: calc(113px - 58px);
+    
+    width: 1235px;
     margin-top: 20px;
+    margin-left: calc(113px - 58px);
     padding: 12px 58px 32px 58px;
     color: #fff;
     background-color: var(--document-bg-color);
@@ -18,11 +21,10 @@
 }
 
 .document__header {
-    width: 100%;
+    width: 1119px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 1119px;
     border-bottom: 1px solid #000;
     padding: 15px 0;
     cursor: pointer;
@@ -38,18 +40,15 @@
     line-height: 31.2px;
 }
 
-.document__body {
+.links__conteiner {
+    width: 1119px;
     grid-template-columns: 1fr 1fr;
     padding-top: 7px;
-    display: none;
-}
-
-.documentItem__wrapper.active > .document__body {
     display: grid;
 }
 
 .document__link {
-    display: block;
+    display: inline-block;
     text-decoration: none;
     width: 100%;
     color: #fff;
@@ -68,3 +67,18 @@
     padding-right: 13px;
 }
 
+.documentItem__wrapper > .documentItem__wrapper  {
+    color: #000;
+    margin-left: 0;
+}
+
+.documentItem__wrapper > .documentItem__wrapper.active  {
+    color: #fff;
+    width: 100%;
+    margin-left: 0;
+    padding: 0;
+}
+
+.documentItem__wrapper > .documentItem__wrapper > .document__header, .links__conteiner {
+    width: calc(1119px - 5%);
+}

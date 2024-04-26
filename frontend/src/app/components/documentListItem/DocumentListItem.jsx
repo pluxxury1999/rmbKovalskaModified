@@ -6,7 +6,7 @@ import { getCategoryById } from "@/app/api/getContent";
 import close from "./arrowClose.png";
 import open from "./arrowOpen.png";
 
-// import "./documentListItem.css";
+import "./documentListItem.css";
 
 const DocumentListItem = ({ categoryId, categoryTitle }) => {
     const [active, setActive] = useState(false);
@@ -21,48 +21,39 @@ const DocumentListItem = ({ categoryId, categoryTitle }) => {
     }, [active]);
 
     return (
-        <>
-            <div>
-                <h2 onClick={() => setActive(!active)}>{categoryTitle}</h2>
+        <div className={`documentItem__wrapper ${active ? "active" : ""}`}>
+            <div className="document__header" onClick={() => setActive(!active)}>
+                <h2 className="document__title">{categoryTitle}</h2>
                 <Image src={active ? open : close} alt="arrow" />
             </div>
             {active && content !== null ? <View content={content} /> : null}
-        </>
+        </div>
     );
 };
 
 const View = ({ content }) => {
     const docsUrl = process.env.NEXT_PUBLIC_UPLOADS_URL;
 
-
     const docs = content.attributes.documents.data.map((doc) => {
         return (
-            <a key={doc.id} href={docsUrl + doc.attributes.document.data.attributes.url} target="_blank">
+            <a key={doc.id} className="document__link" href={docsUrl + doc.attributes.document.data.attributes.url} target="_blank">
                 {doc.attributes.name}
             </a>
         );
     });
 
     const subCategories = content.attributes.subCategories.data.map((subCategory) => {
-        return (
-            <DocumentListItem
-                key={subCategory.id}
-                categoryId={subCategory.id}
-                categoryTitle={subCategory.attributes.title}
-            />
-        );
+        return <DocumentListItem key={subCategory.id} categoryId={subCategory.id} categoryTitle={subCategory.attributes.title} />;
     });
 
     const checkSubCategories = content.attributes.subCategories.data.length > 0;
 
-
     return (
         <>
-            {docs}
+            <div className="links__conteiner">{docs}</div>
             {checkSubCategories ? subCategories : null}
         </>
-    ) 
+    );
 };
 
 export default DocumentListItem;
-
