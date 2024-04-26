@@ -1,52 +1,68 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
-import { getDocuments } from "@/app/api/getContent";
+import { getCategoryById } from "@/app/api/getContent";
 
 import close from "./arrowClose.png";
 import open from "./arrowOpen.png";
 
-import "./documentListItem.css";
+// import "./documentListItem.css";
 
-const DocumentListItem = ({ document, id }) => {
-    const [isActive, setActive] = useState(false);
-    const [documents, setDocuments] = useState(null);
-
-    const categoryId = id;
-
-    const classes = `documentItem__wrapper ${isActive ? "active" : ""}`;
-    const imgUrl = isActive ? open : close;
-    const imgAlt = isActive ? "openedCategory" : "closedCategory";
-
-    const uploadsUrl = process.env.NEXT_PUBLIC_UPLOADS_URL;
+const DocumentListItem = ({ categoryId, categoryTitle }) => {
+    const [active, setActive] = useState(false);
+    const [content, setContent] = useState(null);
 
     useEffect(() => {
-        if (isActive) {
-            getDocuments(categoryId).then((data) => {
-                setDocuments(data.documents.data);
+        if (active === true) {
+            getCategoryById(categoryId).then((data) => {
+                setContent(data);
             });
         }
-    }, [isActive]);
-
-    const documentsList = documents
-        ? documents.map((doc) => {
-              return (
-                  <a key={doc.id} className="document__link" href={uploadsUrl + doc.attributes.document.data.attributes.url} target="_blank" rel="noopener noreferrer">
-                      {doc.attributes.name}
-                  </a>
-              );
-          })
-        : "no data exists";
+    }, [active]);
 
     return (
-        <div className={classes}>
-            <div onClick={() => setActive(!isActive)} className="document__header">
-                <p className="document__title">{document.categoryName}</p>
-                <Image src={imgUrl} alt={imgAlt} />
+        <>
+            <div>
+                <h2 onClick={() => setActive(!active)}>{categoryTitle}</h2>
+                <Image src={active ? open : close} alt="arrow" />
             </div>
-            <div className="document__body">{documentsList}</div>
-        </div>
+            {active && content !== null ? <View content={content} /> : null}
+        </>
     );
 };
 
+const View = ({ content }) => {
+    const docsUrl = process.env.NEXT_PUBLIC_UPLOADS_URL;
+
+
+    const docs = content.attributes.documents.data.map((doc) => {
+        return (
+            <a key={doc.id} href={docsUrl + doc.attributes.document.data.attributes.url} target="_blank">
+                {doc.attributes.name}
+            </a>
+        );
+    });
+
+    const subCategories = content.attributes.subCategories.data.map((subCategory) => {
+        return (
+            <DocumentListItem
+                key={subCategory.id}
+                categoryId={subCategory.id}
+                categoryTitle={subCategory.attributes.title}
+            />
+        );
+    });
+
+    const checkSubCategories = content.attributes.subCategories.data.length > 0;
+
+
+    return (
+        <>
+            {docs}
+            {checkSubCategories ? subCategories : null}
+        </>
+    ) 
+};
+
 export default DocumentListItem;
+

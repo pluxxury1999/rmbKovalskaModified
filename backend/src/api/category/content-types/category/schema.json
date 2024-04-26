@@ -23,15 +23,15 @@
     },
     "parentCategory": {
       "type": "relation",
-      "relation": "oneToMany",
+      "relation": "manyToOne",
       "target": "api::category.category",
-      "mappedBy": "subCategories"
+      "inversedBy": "subCategories"
     },
     "subCategories": {
       "type": "relation",
-      "relation": "manyToOne",
+      "relation": "oneToMany",
       "target": "api::category.category",
-      "inversedBy": "parentCategory"
+      "mappedBy": "parentCategory"
     }
   }
 }

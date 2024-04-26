@@ -1,15 +1,32 @@
 import DocumentListItem from "../documentListItem/DocumentListItem";
 
-import "./documents.css";
+import { useEffect, useState } from "react";
+
+import { getAllCategories } from "../../api/getContent";
+
+// import "./documents.css";
 
 const Documents = ({ content }) => {
+    const [categories, setCategories] = useState([]);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        getAllCategories().then((data) => {
+            setCategories(data);
+        });
+        setLoading(false);
+    }, []);
+
+    const mainCategories = categories.map((category) => {
+        return (
+            <DocumentListItem key={category.id} categoryId={category.id} categoryTitle={category.attributes.title} />
+        );
+    });
 
     return (
         <section id={content.identificator}>
             <div className="title__block">{content.title}</div>
-            <div className="documents__wrapper">
-                <p>some content</p>
-            </div>
+            <div >{!loading ? mainCategories.reverse() : "lost connection"}</div>
         </section>
     );
 };

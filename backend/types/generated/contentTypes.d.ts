@@ -808,12 +808,12 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
     >;
     parentCategory: Attribute.Relation<
       'api::category.category',
-      'oneToMany',
+      'manyToOne',
       'api::category.category'
     >;
     subCategories: Attribute.Relation<
       'api::category.category',
-      'manyToOne',
+      'oneToMany',
       'api::category.category'
     >;
     createdAt: Attribute.DateTime;
