@@ -1,0 +1,19 @@
+footer {
+    background-color: #000;
+    color: #fff;
+    display: flex;
+}
+
+.footer__block-title {
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 31.2px;
+    padding-top: 47px;
+}
+
+.footer__block-text {
+    width: 459px;
+    font-size: 13px;
+    line-height: 13px;
+    padding: 25px 0;
+}

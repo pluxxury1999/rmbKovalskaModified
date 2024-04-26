@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_component_elements_text_blocks",
+  "info": {
+    "displayName": "textBlock",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "paragraphTitle": {
+      "type": "string"
+    },
+    "paragraphContent": {
+      "type": "string"
+    }
+  }
+}

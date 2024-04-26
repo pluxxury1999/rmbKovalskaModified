@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_component_elements_lists",
+  "info": {
+    "displayName": "list",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "listTitle": {
+      "type": "string"
+    },
+    "list": {
+      "type": "component",
+      "repeatable": true,
+      "component": "component-elements.list-element"
+    }
+  }
+}

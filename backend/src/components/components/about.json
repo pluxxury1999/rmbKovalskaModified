@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_components_abouts",
+  "info": {
+    "displayName": "About",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "identificator": {
+      "type": "string"
+    },
+    "list": {
+      "type": "component",
+      "repeatable": true,
+      "component": "component-elements.list"
+    }
+  }
+}

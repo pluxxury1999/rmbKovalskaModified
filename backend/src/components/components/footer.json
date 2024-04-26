@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_components_footers",
+  "info": {
+    "displayName": "Footer"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "textBlock": {
+      "displayName": "textBlock",
+      "type": "component",
+      "repeatable": true,
+      "component": "component-elements.text-block"
+    }
+  }
+}

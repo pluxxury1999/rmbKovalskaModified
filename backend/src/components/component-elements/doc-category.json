@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_component_elements_doc_categories",
+  "info": {
+    "displayName": "docCategory",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "categoryName": {
+      "type": "string"
+    },
+    "categoryContent": {
+      "type": "component",
+      "repeatable": true,
+      "component": "component-elements.doc-item"
+    }
+  }
+}

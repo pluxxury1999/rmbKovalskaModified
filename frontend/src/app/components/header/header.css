@@ -1,0 +1,79 @@
+@import url("../../variebles.css");
+
+header {
+    height: 542px;
+    position: relative;
+}
+
+.header__logo {
+    display: inline-block;
+    margin: 34px 0px 34px 30px;
+    position: relative;
+}
+
+.header__redBox {
+    background-color: var(--box-color);
+    width: 457px;
+    height: 542px;
+    position: absolute;
+    top: 0;
+    right: 62px;
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 34px;
+    text-align: right;
+    color: #fff;
+}
+
+.header__redBox * {
+    font-weight: 700px;
+}
+
+.header__title {
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 38.4px;
+    width: 100%;
+    padding-bottom: 35px;
+}
+
+.header__subtitle {
+    padding-top: 121px;
+    font-weight: 700;
+    width: 100%;
+    line-height: 19.2px;
+}
+
+.header__menu {
+    margin-left: 30px;
+    flex-direction: column;
+    color: white;
+    text-decoration: none;
+    list-style: none;
+    width: 110px;
+}
+
+.menuLink {
+    display: block;
+    font-weight: 500;
+    width: 100%;
+    font-size: 14px;
+    padding: 3.5px 0 3.5px 3.5px;
+    text-decoration: none;
+    color: #000;
+}
+
+.menuLink:hover {
+    color: #fff;
+    background-color: #000;
+    transition: 0.2s ease-in-out;
+}
+
+.header__bgImg {
+    position: absolute;
+    z-index: -2;
+    bottom: 0;
+    right: 0;
+}

@@ -1,0 +1,70 @@
+@import url("../../variebles.css");
+
+.documentItem__wrapper {
+    margin-left: 113px;
+    transition: 0.4s ease;
+}
+
+.documentItem__wrapper.active {
+    margin-left: calc(113px - 58px);
+    margin-top: 20px;
+    padding: 12px 58px 32px 58px;
+    color: #fff;
+    background-color: var(--document-bg-color);
+}
+
+.documentItem__wrapper.active:first-child {
+    margin-top: 0;
+}
+
+.document__header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 1119px;
+    border-bottom: 1px solid #000;
+    padding: 15px 0;
+    cursor: pointer;
+}
+
+.documentItem__wrapper.active > .document__header {
+    border-color: #fff;
+}
+
+.document__title {
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 31.2px;
+}
+
+.document__body {
+    grid-template-columns: 1fr 1fr;
+    padding-top: 7px;
+    display: none;
+}
+
+.documentItem__wrapper.active > .document__body {
+    display: grid;
+}
+
+.document__link {
+    display: block;
+    text-decoration: none;
+    width: 100%;
+    color: #fff;
+    padding-top: 8px;
+    font-size: 16px;
+    line-height: 18px;
+    font-weight: 500;
+}
+
+.document__link:hover {
+    text-decoration: underline;
+}
+
+.document__link::before {
+    content: url("./listDecorator.png");
+    padding-right: 13px;
+}
+

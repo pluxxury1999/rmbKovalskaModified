@@ -1,0 +1,14 @@
+#documents {
+    display: flex;
+    padding-bottom: 20px;
+}
+
+.documentsList__wrapper {
+    margin-top: 20px;
+}
+
+.documents__title{
+    width: 120px;
+    max-width: 120px;
+    padding: 40px 0 0 30px;
+}

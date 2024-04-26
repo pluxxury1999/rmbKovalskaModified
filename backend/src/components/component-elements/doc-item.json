@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_component_elements_doc_items",
+  "info": {
+    "displayName": "docItem",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "docTitle": {
+      "type": "string"
+    },
+    "document": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "files"
+      ]
+    }
+  }
+}

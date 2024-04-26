@@ -1,0 +1,26 @@
+@import url('./variebles.css');
+
+body, * {
+    font-family: var(--font-family);
+    font-weight: var(--font-weight-regular);
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+main {
+    width: 1440px;
+    height: 100%;
+    margin: 0 auto;
+}
+
+li {
+    list-style: none;
+    text-decoration: none;
+}
+
+.title__block {
+    width: 233px;
+    padding: 63px 0 0 30px;
+    min-width: 233px;
+}

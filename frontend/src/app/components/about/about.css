@@ -1,0 +1,39 @@
+#about {
+    background-color: #F5F5F5;
+    display: flex;
+}
+
+.about__content {
+    padding-top: calc(47px - 39px);
+    padding-right: 88px;
+}
+
+.category__title {
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 31.2px;
+    padding-top: 39px;
+    padding-bottom: 9px;
+    border-bottom: 1px solid #000;
+}
+
+.category__list {
+    width: calc(1440px - 233px - 88px);
+}
+
+.listItem {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 10px 0;
+    font-size: 16px;
+    line-height: 20.8px;
+    font-weight: 500;
+}
+
+.listItem__title {
+    grid-column: 1;
+}
+
+.listItem__description {
+    grid-column: 2;
+}
